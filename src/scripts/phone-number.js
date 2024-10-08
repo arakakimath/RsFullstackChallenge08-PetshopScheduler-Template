@@ -12,15 +12,18 @@ phoneInput.addEventListener("input", () => {
   if (!phoneInput.value.includes("+"))
     phoneInput.value = "+";
 
-  if (!listOfNumbers.includes(phoneInput.value[phoneInput.value.length - 1]) && Verify()) 
-    phoneInput.value = phoneInput.value.slice(0,-1)
-
+  if (!listOfNumbers.includes(phoneInput.value[phoneInput.value.length - 1])) {
+    if (listOfCaracteres.includes(phoneInput.value[phoneInput.value.length-1])){
+      if (Verify())
+        phoneInput.value = phoneInput.value.slice(0,-1)
+    }
+    else
+      phoneInput.value = phoneInput.value.slice(0,-1)
+  }
   function Verify() {
     let contain = false
-    phoneInput.value.slice(0,-1).map((c) => {
-      if (listOfCaracteres.includes(c))
-        contain = true
-    })
+    if (phoneInput.value.slice(0,-1).includes(phoneInput.value[phoneInput.value.length-1]))
+      contain = true
     return contain
   }
 
