@@ -10,7 +10,7 @@ phoneInput.addEventListener("focus",() => {
 phoneInput.addEventListener("input", () => {
   if (!phoneInput.value.includes("+"))
     phoneInput.value = "+";
-  
+
   if (!listOfNumbers.includes(phoneInput.value[phoneInput.value.length - 1]))
     phoneInput.value = phoneInput.value.slice(0,-1)
 
@@ -21,7 +21,7 @@ phoneInput.addEventListener("input", () => {
       phoneInput.value = phoneInput.value.slice(0,-1)
       phoneInput.value += ") "
     }
-    else if (!phoneInput.value.includes("-")) {
+    else if (!phoneInput.value.includes("-") && listOfNumbers.includes(phoneInput.value[phoneInput.value.length - 2])) {
       phoneInput.value = phoneInput.value.slice(0,-1)
       phoneInput.value += "-"
     }
